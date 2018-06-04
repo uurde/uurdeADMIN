@@ -1,0 +1,95 @@
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="index.html"></a>
+</div>
+<ul class="nav navbar-top-links navbar-right">
+  <!-- /.dropdown -->
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="fa fa-user fa-fw"></i>
+      <i class="fa fa-caret-down"></i>
+    </a>
+    <ul class="dropdown-menu dropdown-user">
+      <li>
+        <a href="#">
+          <i class="fa fa-user fa-fw"></i> User Profile</a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-gear fa-fw"></i> Settings</a>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a href="login.html">
+          <i class="fa fa-sign-out fa-fw"></i> Logout</a>
+      </li>
+    </ul>
+    <!-- /.dropdown-user -->
+  </li>
+  <!-- /.dropdown -->
+</ul>
+<div class="navbar-default sidebar" role="navigation">
+  <div class="sidebar-nav navbar-collapse">
+    <ul class="nav" id="side-menu">
+      <li>
+        <a  routerLink="/" routerLinkActive="active">
+          <i class="fa fa-dashboard fa-fw"></i> Home</a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-table fa-fw"></i> Web Site
+          <span class="fa arrow"></span>
+        </a>
+        <ul class="nav nav-second-level">
+          <li>
+            <a routerLink="/about" routerLinkActive="active">About</a>
+          </li>
+          <li>
+            <a routerLink="/badge" routerLinkActive="active">Badges</a>
+          </li>
+          <li>
+            <a routerLink="/resume" routerLinkActive="active">Resume</a>
+          </li>
+          <li>
+            <a routerLink="/project" routerLinkActive="active">Projects</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-edit fa-fw"></i> List
+          <span class="fa arrow"></span>
+        </a>
+        <ul class="nav nav-second-level">
+          <li>
+            <a routerLink="/vinyl" routerLinkActive="active">Vinyl</a>
+          </li>
+          <li>
+            <a routerLink="/movie" routerLinkActive="active">Movie</a>
+          </li>
+          <li>
+            <a routerLink="/book" routerLinkActive="active">Book</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a  routerLink="/contact" routerLinkActive="active">
+          <i class="fa fa-dashboard fa-fw"></i> Contact</a>
+      </li>
+      <li>
+        <a  routerLink="/log" routerLinkActive="active">
+          <i class="fa fa-dashboard fa-fw"></i> Log</a>
+      </li>
+      <li>
+        <a  routerLink="/user" routerLinkActive="active">
+          <i class="fa fa-dashboard fa-fw"></i> User</a>
+      </li>
+    </ul>
+  </div>
+  <!-- /.sidebar-collapse -->
+</div>
