@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -16,7 +17,23 @@ export class LogService {
 
     }
 
-    getAllContact(log: LogModel) {
-        this._http.get(this._url, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+    getAllLogs() {
+        return this._http.get(this._url + "/GetLogDetails", this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+    }
+
+    getLog(logId) {
+        return this._http.get(this._url + "/" + logId, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+    }
+
+    insertLog(log) {
+        return this._http.post(this._url, this.headerConfig.httpOptions, log).pipe(tap(res => { return res; }));
+    }
+
+    updateLog(log) {
+        return this._http.put(this._url + "/" + log.logId, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+    }
+
+    deleteLog(logId) {
+        return this._http.delete(this._url + "/" + logId, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
     }
 }

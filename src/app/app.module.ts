@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from 'src/app/app-routing/app-routing.module';
@@ -17,6 +19,10 @@ import { ContactComponent } from './components/contact/contact.component';
 import { LogComponent } from './components/log/log.component';
 import { UserComponent } from './components/user/user.component';
 
+import { LogService } from 'src/app/services/log.service';
+import { PaginationComponent } from './shared/pagination/pagination.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +37,19 @@ import { UserComponent } from './components/user/user.component';
     BookComponent,
     ContactComponent,
     LogComponent,
-    UserComponent
+    UserComponent,
+    PaginationComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    LogService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -2,6 +2,71 @@
   <div class="row">
     <div class="col-lg-12">
       <h2 class="page-header">Log</h2>
+      <app-spinner [visible]="logsLoading"></app-spinner>
+      <app-spinner [visible]="logLoading"></app-spinner>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default" *ngIf="logs">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Log Type</th>
+                <th>Action Path</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let log of logs" (click)="select(log)">
+                <td>{{log.logTypeName}}</td>
+                <td>{{log.actionPath}}</td>
+                <td>
+                  <button type="button" class="btn btn-info btn-circle">
+                    <i (click)="updateLog(log)" class="fa fa-edit"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-circle">
+                    <i (click)="deleteLog(log)" class="fa fa-times"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <!-- <app-pagination [items]="logs" (page-changed)="onPageChanged($event)"></app-pagination> -->
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div *ngIf="log" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{ log.logTypeName }}</h3>
+      </div>
+      <div class="panel-body">
+        <p>
+          <b>Path: </b>{{ log.actionPath }} /
+          <b>Date: </b> {{log.creDate | date}}</p>
+        <hr/>
+        <p>{{log.message}}</p>
+        <hr/>
+        <!-- 
+            <div class="media" *ngFor="let comment of currentPost.comments">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object thumbnail" src="http://lorempixel.com/80/80/people?random={{ comment.id }}" alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        {{ comment.name }}
+                    </h4> 
+                    {{ comment.body }}
+                </div>
+            </div> -->
+      </div>
     </div>
   </div>
 </div>
