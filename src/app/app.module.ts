@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { FormsModule  } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from 'src/app/app-routing/app-routing.module';
@@ -22,6 +23,10 @@ import { UserComponent } from './components/user/user.component';
 import { LogService } from 'src/app/services/log.service';
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { FilterPipe } from './shared/filter/filter.pipe';
+import { ContactService } from './services/contact.service';
+import { UserService } from './services/user.service';
+import { UserFormComponent } from './components/user/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -39,16 +44,21 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     LogComponent,
     UserComponent,
     PaginationComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    FilterPipe,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule 
   ],
   providers: [
-    LogService
+    LogService,
+    ContactService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

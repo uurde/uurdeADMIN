@@ -32,8 +32,11 @@ export class LogComponent implements OnInit {
       () => { this.logsLoading = false; });
   }
 
-  updateLog(log) {
-
+  save() {
+    if (this.log.id)
+      this._logService.updateLog(this.log);
+    else
+      this._logService.insertLog(this.log);
   }
 
   deleteLog(log) {

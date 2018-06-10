@@ -3,33 +3,34 @@
     <div class="col-lg-12">
       <h2 class="page-header">Log</h2>
       <app-spinner [visible]="logsLoading"></app-spinner>
-      <app-spinner [visible]="logLoading"></app-spinner>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-lg-12">
     <div class="panel panel-default" *ngIf="logs">
       <div class="panel-body">
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>Log Type</th>
+                <th width="12%">Log Type</th>
                 <th>Action Path</th>
-                <th></th>
+                <th>Message</th>
+                <th width="15%">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let log of logs" (click)="select(log)">
+              <!-- <tr>
+                  <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
+              </tr> -->
+              <tr *ngFor="let log of logs | filter : searchText">
                 <td>{{log.logTypeName}}</td>
                 <td>{{log.actionPath}}</td>
+                <td>{{log.message}}</td>
                 <td>
-                  <button type="button" class="btn btn-info btn-circle">
-                    <i (click)="updateLog(log)" class="fa fa-edit"></i>
-                  </button>
-                  <button type="button" class="btn btn-danger btn-circle">
-                    <i (click)="deleteLog(log)" class="fa fa-times"></i>
+                  <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(log)">
+                    <i class="fa fa-search"></i>
                   </button>
                 </td>
               </tr>
@@ -40,32 +41,37 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-6">
-    <div *ngIf="log" class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">{{ log.logTypeName }}</h3>
-      </div>
-      <div class="panel-body">
-        <p>
-          <b>Path: </b>{{ log.actionPath }} /
-          <b>Date: </b> {{log.creDate | date}}</p>
-        <hr/>
-        <p>{{log.message}}</p>
-        <hr/>
-        <!-- 
-            <div class="media" *ngFor="let comment of currentPost.comments">
-                <div class="media-left">
-                    <a href="#">
-                        <img class="media-object thumbnail" src="http://lorempixel.com/80/80/people?random={{ comment.id }}" alt="...">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        {{ comment.name }}
-                    </h4> 
-                    {{ comment.body }}
-                </div>
-            </div> -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" *ngIf="log">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">{{ log.logTypeName }}</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            <b>Path: </b>{{ log.actionPath }} /
+            <b>Date: </b> {{log.creDate | date}}</p>
+          <hr/>
+          <p>{{log.message}}</p>
+          <hr/>
+          <!-- <div class="media" *ngFor="let comment of currentPost.comments">
+              <div class="media-left">
+                  <a href="#">
+                      <img class="media-object thumbnail" src="http://lorempixel.com/80/80/people?random={{ comment.id }}" alt="...">
+                  </a>
+              </div>
+              <div class="media-body">
+                  <h4 class="media-heading">
+                      {{ comment.name }}
+                  </h4> 
+                  {{ comment.body }}
+              </div>
+          </div> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>

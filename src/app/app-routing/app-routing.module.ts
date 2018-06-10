@@ -13,6 +13,7 @@ import { BookComponent } from 'src/app/components/book/book.component';
 import { ContactComponent } from 'src/app/components/contact/contact.component';
 import { LogComponent } from 'src/app/components/log/log.component';
 import { UserComponent } from 'src/app/components/user/user.component';
+import { UserFormComponent } from 'src/app/components/user/user-form/user-form.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,7 +26,10 @@ const appRoutes: Routes = [
   { path: 'book', component: BookComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'log', component: LogComponent },
-  { path: 'user', component: UserComponent }
+  { path: 'user/:id', component: UserFormComponent },
+  { path: 'user/new', component: UserFormComponent },
+  { path: 'user', component: UserComponent },
+  { path: '**', component: HomeComponent }
 ]
 
 @NgModule({
