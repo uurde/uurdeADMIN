@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as _ from 'underscore';
 
 import { UserService } from 'src/app/services/user.service';
-import { UserModel } from '../../models/user.model';
 
 @Component({
   selector: 'app-user',

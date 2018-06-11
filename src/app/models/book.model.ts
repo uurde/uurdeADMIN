@@ -1,5 +1,5 @@
 import { BaseModel } from "./base.model";
 
-export class ContactModel extends BaseModel{
+export class BookModel extends BaseModel{
     
 }

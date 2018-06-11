@@ -4,13 +4,15 @@ import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FormsModule  } from '@angular/forms'
+import { AppRoutingModule } from 'src/app/app-routing/app-routing.module';
+
+import { FilterPipe } from './shared/filter/filter.pipe';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from 'src/app/app-routing/app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
-import { BadgeComponent } from './components/badge/badge.component';
+import { SkillComponent } from './components/skill/skill.component';
 import { ResumeComponent } from './components/resume/resume.component';
 import { ProjectComponent } from './components/project/project.component';
 import { VinylComponent } from './components/vinyl/vinyl.component';
@@ -19,14 +21,21 @@ import { BookComponent } from './components/book/book.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LogComponent } from './components/log/log.component';
 import { UserComponent } from './components/user/user.component';
-
-import { LogService } from 'src/app/services/log.service';
+import { UserFormComponent } from './components/user/user-form/user-form.component';
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
-import { FilterPipe } from './shared/filter/filter.pipe';
+
+
+import { BookService } from './services/book.service';
 import { ContactService } from './services/contact.service';
+import { LogService } from 'src/app/services/log.service';
+import { MovieService } from './services/movie.service';
+import { ProjectService } from './services/project.service';
+import { ResumeService } from './services/resume.service';
+import { SkillService } from './services/skill.service';
 import { UserService } from './services/user.service';
-import { UserFormComponent } from './components/user/user-form/user-form.component';
+import { VinylService } from './services/vinyl.service';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +43,7 @@ import { UserFormComponent } from './components/user/user-form/user-form.compone
     NavbarComponent,
     HomeComponent,
     AboutComponent,
-    BadgeComponent,
+    SkillComponent,
     ResumeComponent,
     ProjectComponent,
     VinylComponent,
@@ -56,9 +65,15 @@ import { UserFormComponent } from './components/user/user-form/user-form.compone
     FormsModule 
   ],
   providers: [
-    LogService,
+    BookService,
     ContactService,
-    UserService
+    LogService,
+    MovieService,
+    ProjectService,
+    ResumeService,
+    SkillService,
+    UserService,
+    VinylService
   ],
   bootstrap: [AppComponent]
 })

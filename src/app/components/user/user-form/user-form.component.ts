@@ -48,30 +48,8 @@ export class UserFormComponent implements OnInit {
         let path = reader.result;
         this.user.userPhotoPath = path;
       }
-      // reader.onload = () => {
-      //   this.userForm.get("userPhotoPath").setValue({
-      //     filename: file.name,
-      //     filetype: file.type,
-      //     value: reader.result.split(',')[1]
-      //   })
-      // };
-      // console.log(reader);
-      // console.log(this.user.userPhotoPath);
-      // this.user.userPhotoPath = reader.result;
     }
   }
-
-  //   getFiles(event) {
-  //     this.files = event.target.files;
-  //     var reader = new FileReader();
-  //     reader.onload = this._handleReaderLoaded.bind(this);
-  //     reader.readAsBinaryString(this.files[0]);
-  // }
-
-  // _handleReaderLoaded(readerEvt) {
-  //     var binaryString = readerEvt.target.result;
-  //     this.user.userPhotoPath = btoa(binaryString);  // Converting binary string data.
-  // }
 
   save() {
     var result;

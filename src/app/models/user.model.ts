@@ -1,4 +1,6 @@
-export class UserModel{
+import { BaseModel } from "./base.model";
+
+export class UserModel extends BaseModel{
     userId?: number;
     userName: string;
     userPassword: string;
@@ -7,9 +9,4 @@ export class UserModel{
     userPhotoPath: string;
     description: string;
     userCvPath: string;
-    creUser?: number;
-    creDate?: Date;
-    modUser?: number;
-    modDate?: Date;
-    isDeleted: boolean;
 }
