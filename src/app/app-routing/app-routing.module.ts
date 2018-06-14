@@ -14,15 +14,33 @@ import { ContactComponent } from 'src/app/components/contact/contact.component';
 import { LogComponent } from 'src/app/components/log/log.component';
 import { UserComponent } from 'src/app/components/user/user.component';
 import { UserFormComponent } from 'src/app/components/user/user-form/user-form.component';
+import { SkillFormComponent } from '../components/skill/skill-form/skill-form.component';
+import { ResumeFormComponent } from '../components/resume/resume-form/resume-form.component';
+import { ProjectFormComponent } from '../components/project/project-form/project-form.component';
+import { VinylFormComponent } from '../components/vinyl/vinyl-form/vinyl-form.component';
+import { MovieFormComponent } from '../components/movie/movie-form/movie-form.component';
+import { BookFormComponent } from '../components/book/book-form/book-form.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'skill/:id', component: SkillFormComponent },
+  { path: 'skill/new', component: SkillFormComponent },
   { path: 'skill', component: SkillComponent },
+  { path: 'resume/:id', component: ResumeFormComponent },
+  { path: 'resume/new', component: ResumeFormComponent },
   { path: 'resume', component: ResumeComponent },
+  { path: 'project/:id', component: ProjectFormComponent },
+  { path: 'project/new', component: ProjectFormComponent },
   { path: 'project', component: ProjectComponent },
+  { path: 'vinyl/:id', component: VinylFormComponent },
+  { path: 'vinyl/new', component: VinylFormComponent },
   { path: 'vinyl', component: VinylComponent },
+  { path: 'movie/:id', component: MovieFormComponent },
+  { path: 'movie/new', component: MovieFormComponent },
   { path: 'movie', component: MovieComponent },
+  { path: 'book/:id', component: BookFormComponent },
+  { path: 'book/new', component: BookFormComponent },
   { path: 'book', component: BookComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'log', component: LogComponent },

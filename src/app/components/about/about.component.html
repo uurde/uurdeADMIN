@@ -1,7 +1,77 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-12">
-      <h2 class="page-header">About</h2>
+      <h2 class="page-header">About
+        <button type="button" class="btn btn-success btn-circle" routerLink="/about/new">
+          <i class="fa fa-plus"></i>
+        </button>
+      </h2>
+      <app-spinner [visible]="aboutsLoading"></app-spinner>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default" *ngIf="abouts">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Full Name</th>
+                <th>About Name</th>
+                <th>Active</th>
+                <th width="15%">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                      <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
+                  </tr> -->
+              <tr *ngFor="let about of abouts | filter : searchText">
+                <td>{{about.firstName}} {{about.lastName}}</td>
+                <td>{{about.aboutName}}</td>
+                <td>{{about.isDeleted ? "No" : "Yes"}}</td>
+                <td>
+                  <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(about)">
+                    <i class="fa fa-search"></i>
+                  </button>
+                  <button type="button" class="btn btn-info btn-circle" [routerLink]="['/about', about.aboutId]">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-circle">
+                    <i (click)="deleteAbout(about)" class="fa fa-times"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td *ngIf="abouts?.length === 0">No Data!</td>
+              </tr>
+            </tbody>
+            <!-- <app-pagination [items]="abouts" (page-changed)="onPageChanged($event)"></app-pagination> -->
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" *ngIf="about">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">{{about.firstName}} {{about.lastName}}</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            <b>Active: </b>{{ about.isDeleted ? "No" : "Yes" }} /
+            <b>Date: </b> {{about.creDate | date}}</p>
+          <hr/>
+          <p>{{about.aboutBody}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

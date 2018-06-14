@@ -21,7 +21,14 @@ import { BookComponent } from './components/book/book.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LogComponent } from './components/log/log.component';
 import { UserComponent } from './components/user/user.component';
+
 import { UserFormComponent } from './components/user/user-form/user-form.component';
+import { VinylFormComponent } from './components/vinyl/vinyl-form/vinyl-form.component';
+import { SkillFormComponent } from './components/skill/skill-form/skill-form.component';
+import { ProjectFormComponent } from './components/project/project-form/project-form.component';
+import { MovieFormComponent } from './components/movie/movie-form/movie-form.component';
+import { ResumeFormComponent } from './components/resume/resume-form/resume-form.component';
+
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 
@@ -35,6 +42,7 @@ import { ResumeService } from './services/resume.service';
 import { SkillService } from './services/skill.service';
 import { UserService } from './services/user.service';
 import { VinylService } from './services/vinyl.service';
+import { BookFormComponent } from './components/book/book-form/book-form.component';
 
 
 @NgModule({
@@ -55,7 +63,13 @@ import { VinylService } from './services/vinyl.service';
     PaginationComponent,
     SpinnerComponent,
     FilterPipe,
-    UserFormComponent
+    UserFormComponent,
+    VinylFormComponent,
+    SkillFormComponent,
+    ProjectFormComponent,
+    MovieFormComponent,
+    ResumeFormComponent,
+    BookFormComponent
   ],
   imports: [
     BrowserModule,

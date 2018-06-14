@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'underscore';
+
+import { ResumeService } from 'src/app/services/resume.service';
 
 @Component({
   selector: 'app-resume',
@@ -6,10 +9,47 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resume.component.css']
 })
 export class ResumeComponent implements OnInit {
+  resumes: any;
+  resume;
+  pagedResumes = [];
+  pageSize = 10;
+  resumesLoading;
 
-  constructor() { }
+  constructor(private _resumeService: ResumeService) { }
 
   ngOnInit() {
+    this.getResumes();
+  }
+
+  getResumes() {
+    this.resumesLoading = true
+    this._resumeService.getAllResumes().subscribe(data => {
+      this.resumes = data;
+      //this.pagedResumes = _.take(this.resumes, this, this.pageSize);
+    },
+      null,
+      () => { this.resumesLoading = false; });
+  }
+
+  deleteResume(resume) {
+    if (confirm("Are you sure you want to disactive resume?")) {
+      var index = this.resumes.indexOf(resume)
+      this._resumeService.deleteResume(resume.resumeId)
+        .subscribe(null,
+          err => {
+            alert("Could not delete the resume.");
+          });
+    }
+  }
+
+  select(resume) {
+    this.resume = resume;
+    this._resumeService.getResume(resume.resumeId).subscribe(data => this.resume = data, null);
+  }
+
+  onPageChanged(page) {
+    var startIndex = (page - 1) * this.pageSize;
+    this.pagedResumes = _.take(_.rest(this.resumes, startIndex), this.pageSize);
   }
 
 }

@@ -6,5 +6,4 @@ export class LogModel extends BaseModel {
     logTypeId: number;
     logTypeName: string;
     actionPath: string;
-
 }
