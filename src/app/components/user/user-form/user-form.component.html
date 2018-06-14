@@ -28,11 +28,11 @@
         </div>
         <div class="form-group col-lg-6">
           <label>User Photo</label>
-          <input type="file" class="form-control" name="userPhotoPath" id="userPhotoPath" (change)="onFileChange($event)" #fileInput>
+          <input type="file" class="form-control" name="userPhotoPath" id="userPhotoPath" (change)="onFileChange($event)" #fileInput accept="image/*">
         </div>
         <div class="form-group col-lg-6">
           <label>User CV</label>
-          <input type="file" class="form-control" name="userCvPath">
+          <input type="file" class="form-control" name="userCvPath" accept="application/pdf">
         </div>
         <div class="form-group col-lg-12">
           <label>About Description</label>
@@ -45,5 +45,4 @@
       </form>
     </div>
   </div>
-
 </div>

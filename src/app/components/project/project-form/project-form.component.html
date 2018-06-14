@@ -25,6 +25,10 @@
         <div class="form-group col-lg-6">
           <label>End Date</label>
           <input type="date" class="form-control" #endDate="ngModel" [(ngModel)]="project.endDate" name="endDate">
+        </div>        
+        <div class="form-group col-lg-6">
+          <label>Project Photo</label>
+          <input type="file" class="form-control" name="projectPhotoPath" id="projectPhotoPath" (change)="onFileChange($event)" #fileInput accept="image/*">
         </div>
         <div class="form-group col-lg-12">
           <label>Description</label>
