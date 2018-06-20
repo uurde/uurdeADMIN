@@ -21,7 +21,7 @@ export class ProjectService {
     }
 
     getAllProjects() {
-        return this._http.get(this._url, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+        return this._http.get(this._url + "/GetProjectDetails", this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
     }
 
     getProject(projectId) {
@@ -38,5 +38,9 @@ export class ProjectService {
 
     deleteProject(projectId) {
         return this._http.delete(this._url + "/" + projectId, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+    }
+
+    getProjectTypes() {
+        return this._http.get(this._url + "/GetProjectTypes", this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
     }
 }

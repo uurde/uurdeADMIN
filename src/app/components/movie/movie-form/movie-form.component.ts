@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { MovieService } from 'src/app/services/movie.service';
+import { MovieModel } from '../../../models/movie.model';
+import { FormGroup, NgForm } from '@angular/forms';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-movie-form',
@@ -6,10 +12,64 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-form.component.css']
 })
 export class MovieFormComponent implements OnInit {
+  title: string;
+  movie = new MovieModel();
+  movieForm: FormGroup;
+  path;
+  movieMediaTypes: any;
 
-  constructor() { }
+  constructor(private _router: Router, private _route: ActivatedRoute, private _movieService: MovieService) {
 
-  ngOnInit() {
   }
 
+  ngOnInit() {
+    this._route.params.subscribe(params => {
+      var id = +params["id"];
+      this.title = id ? "Edit Movie" : "New Movie";
+      if (!id)
+        return;
+      this._movieService.getMovie(id).subscribe(
+        data => {
+          this.movie = data as any;
+        },
+        response => {
+          if (response.status == 404) {
+            this._router.navigate(['movie']);
+          }
+        }
+      );
+    });
+    this.getMovieMediaTypes();
+  }
+
+  selectchange(args){ 
+    this.movie.movieMediaTypeId = args.target.selectedIndex; 
+  } 
+
+  save() {
+    var result;
+    if (this.movie.movieId == null)
+      result = this._movieService.insertMovie(this.movie);
+    else
+      result = this._movieService.updateMovie(this.movie);
+
+    result.subscribe(x => { this._router.navigate(['movie']); });
+  }
+
+  cancel() {
+    this._router.navigate(['movie']);
+  }  
+
+  getMovieMediaTypes() {
+    this._movieService.getMovieMediaTypes().subscribe(data => { this.movieMediaTypes = data; }, null);
+  }
+
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '20rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no'
+  };
 }

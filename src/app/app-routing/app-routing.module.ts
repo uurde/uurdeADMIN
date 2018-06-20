@@ -20,10 +20,12 @@ import { ProjectFormComponent } from '../components/project/project-form/project
 import { VinylFormComponent } from '../components/vinyl/vinyl-form/vinyl-form.component';
 import { MovieFormComponent } from '../components/movie/movie-form/movie-form.component';
 import { BookFormComponent } from '../components/book/book-form/book-form.component';
+import { LoginComponent } from "../components/login/login.component";
+import { ContactFormComponent } from '../components/contact/contact-form/contact-form.component';
 
 const appRoutes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
   { path: 'skill/:id', component: SkillFormComponent },
   { path: 'skill/new', component: SkillFormComponent },
   { path: 'skill', component: SkillComponent },
@@ -43,6 +45,7 @@ const appRoutes: Routes = [
   { path: 'book/new', component: BookFormComponent },
   { path: 'book', component: BookComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'contact/:id', component: ContactFormComponent },
   { path: 'log', component: LogComponent },
   { path: 'user/:id', component: UserFormComponent },
   { path: 'user/new', component: UserFormComponent },

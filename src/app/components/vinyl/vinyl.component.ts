@@ -14,6 +14,7 @@ export class VinylComponent implements OnInit {
   pagedVinyls = [];
   pageSize = 10;
   vinylsLoading;
+  p: number = 1;
 
   constructor(private _vinylService: VinylService) { }
 
@@ -25,7 +26,7 @@ export class VinylComponent implements OnInit {
     this.vinylsLoading = true
     this._vinylService.getAllVinyls().subscribe(data => {
       this.vinyls = data;
-      //this.pagedVinyls = _.take(this.vinyls, this, this.pageSize);
+      this.pagedVinyls = _.take(this.vinyls, this, this.pageSize);
     },
       null,
       () => { this.vinylsLoading = false; });

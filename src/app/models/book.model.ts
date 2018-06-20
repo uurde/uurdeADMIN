@@ -7,4 +7,5 @@ export class BookModel extends BaseModel{
     publisherName: string;
     bookCoverPath: string;
     bookReleaseDate: Date;
+    isRead: boolean;
 }

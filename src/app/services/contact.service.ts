@@ -25,7 +25,7 @@ export class ContactService {
     }
 
     insertContact(contact) {
-        return this._http.post(this._url, this.headerConfig.httpOptions, contact).pipe(tap(res => { return res; }));
+        return this._http.post(this._url, contact, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
     }
 
     updateContact(contact) {
@@ -34,5 +34,9 @@ export class ContactService {
 
     deleteContact(contactId) {
         return this._http.delete(this._url + "/" + contactId, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+    }
+
+    sendMail(contact) {
+        return this._http.post(this._url + "/SendMail", contact, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
     }
 }

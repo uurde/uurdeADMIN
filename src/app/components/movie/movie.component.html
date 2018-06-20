@@ -18,9 +18,9 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>Full Name</th>
                 <th>Movie Name</th>
-                <th>Active</th>
+                <th>Director</th>
+                <th>Media</th>
                 <th width="15%">Actions</th>
               </tr>
             </thead>
@@ -28,10 +28,10 @@
               <!-- <tr>
                       <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
                   </tr> -->
-              <tr *ngFor="let movie of movies | filter : searchText">
-                <td>{{movie.firstName}} {{movie.lastName}}</td>
+              <tr *ngFor="let movie of movies | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
                 <td>{{movie.movieName}}</td>
-                <td>{{movie.isDeleted ? "No" : "Yes"}}</td>
+                <td>{{movie.directorName}}</td>
+                <td>{{movie.movieTypeName}}</td>
                 <td>
                   <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(movie)">
                     <i class="fa fa-search"></i>
@@ -48,8 +48,10 @@
                 <td *ngIf="movies?.length === 0">No Data!</td>
               </tr>
             </tbody>
-            <!-- <app-pagination [items]="movies" (page-changed)="onPageChanged($event)"></app-pagination> -->
           </table>
+          <div class="has-text-centered">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
         </div>
       </div>
     </div>
@@ -59,14 +61,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">{{movie.firstName}} {{movie.lastName}}</h4>
+          <h4 class="modal-title" id="myModalLabel">{{movie.movieName}}</h4>
         </div>
         <div class="modal-body">
-          <p>
-            <b>Active: </b>{{ movie.isDeleted ? "No" : "Yes" }} /
-            <b>Date: </b> {{movie.creDate | date}}</p>
+            <!-- <img style="display: block; margin-left: auto; margin-right: auto; width: 150px;" src="https://uur-api-dev.azurewebsites.net/{{book.bookCoverPath}}"> -->
           <hr/>
-          <p>{{movie.movieBody}}</p>
+          <p><b>Director: </b> {{movie.directorName}}</p>
+          <p><b>Media Type: </b> {{movie.movieTypeName}}</p>
+          <p><b>Release Date: </b> {{movie.movieReleaseDate | date}}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

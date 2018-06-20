@@ -67,7 +67,7 @@
             <b>End Date: </b> {{resume.endDate | date}}</p>
           <hr/>
           <b><p>{{resume.title}}</p></b>
-          <p>{{resume.resumeDescription}}</p>
+          <div [innerHTML]="resume.resumeDescription"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

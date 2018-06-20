@@ -11,10 +11,11 @@ import { LogService } from 'src/app/services/log.service';
 export class LogComponent implements OnInit {
   logs: any;
   log;
-  pagedLogs = [];
-  pageSize = 10;
   logsLoading;
   logLoading;
+  pagedLogs = [];
+  pageSize = 10;
+  p: number = 1;
 
   constructor(private _logService: LogService) { }
 
@@ -26,7 +27,7 @@ export class LogComponent implements OnInit {
     this.logsLoading = true
     this._logService.getAllLogs().subscribe(data => {
       this.logs = data;
-      //this.pagedLogs = _.take(this.logs, this, this.pageSize);
+      this.pagedLogs = _.take(this.logs, this, this.pageSize);
     },
       null,
       () => { this.logsLoading = false; });
@@ -63,10 +64,4 @@ export class LogComponent implements OnInit {
         () => this.logLoading = false
       );
   }
-
-  onPageChanged(page) {
-    var startIndex = (page - 1) * this.pageSize;
-    this.pagedLogs = _.take(_.rest(this.logs, startIndex), this.pageSize);
-  }
-
 }

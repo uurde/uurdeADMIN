@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 import { ProjectModel } from '../../../models/project.model';
 import { FormGroup, NgForm } from '@angular/forms';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-project-form',
@@ -15,6 +16,7 @@ export class ProjectFormComponent implements OnInit {
   project = new ProjectModel();
   projectForm: FormGroup;
   path;
+  projectTypes: any;
 
   constructor(private _router: Router, private _route: ActivatedRoute, private _projectService: ProjectService) {
 
@@ -37,7 +39,12 @@ export class ProjectFormComponent implements OnInit {
         }
       );
     });
-  }
+    this.getProjectTypes();
+  }  
+
+  selectchange(args){ 
+    this.project.projectTypeId = args.target.selectedIndex; 
+  } 
 
   save() {
     var result;
@@ -51,5 +58,33 @@ export class ProjectFormComponent implements OnInit {
 
   cancel() {
     this._router.navigate(['project']);
+  }  
+
+  getProjectTypes() {
+    this._projectService.getProjectTypes().subscribe(data => {
+      this.projectTypes = data;
+    },
+      null);
   }
+
+  onFileChange(event) {
+    let reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        let path = reader.result;
+        this.project.projectImagePath = path;
+      }
+    }
+  }
+
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '20rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no'
+  };
 }

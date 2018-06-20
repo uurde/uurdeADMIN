@@ -11,9 +11,10 @@ import { BookService } from 'src/app/services/book.service';
 export class BookComponent implements OnInit {
   books: any;
   book;
+  booksLoading;
   pagedBooks = [];
   pageSize = 10;
-  booksLoading;
+  p: number = 1;
 
   constructor(private _bookService: BookService) { }
 
@@ -25,7 +26,7 @@ export class BookComponent implements OnInit {
     this.booksLoading = true
     this._bookService.getAllBooks().subscribe(data => {
       this.books = data;
-      //this.pagedBooks = _.take(this.books, this, this.pageSize);
+      this.pagedBooks = _.take(this.books, this, this.pageSize);
     },
       null,
       () => { this.booksLoading = false; });
@@ -39,7 +40,7 @@ export class BookComponent implements OnInit {
   }
 
   deleteBook(book) {
-    if (confirm("Are you sure you want to delete message?")) {
+    if (confirm("Are you sure you want to delete book?")) {
       var index = this.books.indexOf(book)
       this.books.splice(index, 1);
       this._bookService.deleteBook(book.bookId)

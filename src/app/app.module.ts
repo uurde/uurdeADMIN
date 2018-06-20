@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { FormsModule  } from '@angular/forms'
+import { FormsModule,ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from 'src/app/app-routing/app-routing.module';
 
 import { FilterPipe } from './shared/filter/filter.pipe';
@@ -31,6 +31,8 @@ import { ResumeFormComponent } from './components/resume/resume-form/resume-form
 
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 import { BookService } from './services/book.service';
@@ -43,6 +45,8 @@ import { SkillService } from './services/skill.service';
 import { UserService } from './services/user.service';
 import { VinylService } from './services/vinyl.service';
 import { BookFormComponent } from './components/book/book-form/book-form.component';
+import { LoginComponent } from './components/login/login.component';
+import { ContactFormComponent } from './components/contact/contact-form/contact-form.component';
 
 
 @NgModule({
@@ -69,14 +73,19 @@ import { BookFormComponent } from './components/book/book-form/book-form.compone
     ProjectFormComponent,
     MovieFormComponent,
     ResumeFormComponent,
-    BookFormComponent
+    BookFormComponent,
+    LoginComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
     HttpClientModule,
-    FormsModule 
+    FormsModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    AngularEditorModule
   ],
   providers: [
     BookService,

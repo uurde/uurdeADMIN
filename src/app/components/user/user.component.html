@@ -66,7 +66,7 @@
             <b>Active: </b>{{ user.isDeleted ? "No" : "Yes" }} /
             <b>Date: </b> {{user.creDate | date}}</p>
           <hr/>
-          <p>{{user.userBody}}</p>
+          <div [innerHTML]="user.userBody"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UserModel } from '../../../models/user.model';
 import { FormGroup, NgForm } from '@angular/forms';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-user-form',
@@ -64,4 +65,13 @@ export class UserFormComponent implements OnInit {
   cancel() {
     this._router.navigate(['user']);
   }
+
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '20rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no'
+  };
 }

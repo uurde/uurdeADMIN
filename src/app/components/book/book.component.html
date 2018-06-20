@@ -18,9 +18,10 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>Full Name</th>
                 <th>Book Name</th>
-                <th>Active</th>
+                <th>Author Name</th>
+                <th>Publisher</th>
+                <th>Read</th>
                 <th width="15%">Actions</th>
               </tr>
             </thead>
@@ -28,10 +29,11 @@
               <!-- <tr>
                       <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
                   </tr> -->
-              <tr *ngFor="let book of books | filter : searchText">
-                <td>{{book.firstName}} {{book.lastName}}</td>
+              <tr *ngFor="let book of books | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
                 <td>{{book.bookName}}</td>
-                <td>{{book.isDeleted ? "No" : "Yes"}}</td>
+                <td>{{book.authorName}}</td>
+                <td>{{book.publisherName}}</td>
+                <td>{{book.isRead ? "Yes" : "No"}}</td>
                 <td>
                   <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(book)">
                     <i class="fa fa-search"></i>
@@ -48,8 +50,10 @@
                 <td *ngIf="books?.length === 0">No Data!</td>
               </tr>
             </tbody>
-            <!-- <app-pagination [items]="books" (page-changed)="onPageChanged($event)"></app-pagination> -->
           </table>
+          <div class="has-text-centered">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
         </div>
       </div>
     </div>
@@ -59,14 +63,18 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">{{book.firstName}} {{book.lastName}}</h4>
+          <h4 class="modal-title" id="myModalLabel">{{book.bookName}}</h4>
         </div>
         <div class="modal-body">
           <p>
-            <b>Active: </b>{{ book.isDeleted ? "No" : "Yes" }} /
-            <b>Date: </b> {{book.creDate | date}}</p>
+            <b>Read: </b>{{ book.isRead ? "Yes" : "No" }} /
+            <b>Release Date: </b> {{book.bookReleaseDate | date}}</p>
           <hr/>
-          <p>{{book.bookBody}}</p>
+          <!-- <img style="display: block; margin-left: auto; margin-right: auto; width: 150px;" src="https://uur-api-dev.azurewebsites.net/{{book.bookCoverPath}}"> -->
+          <p>
+            <b>Author: </b>{{book.authorName}}</p>
+          <p>
+            <b>Publisher: </b>{{book.publisherName}}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -11,6 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class ProjectComponent implements OnInit {
   projects: any;
   project;
+  projectTypes: any;
   pagedProjects = [];
   pageSize = 10;
   projectsLoading;

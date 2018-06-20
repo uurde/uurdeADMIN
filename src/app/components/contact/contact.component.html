@@ -1,11 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-12">
-      <h2 class="page-header">Contact
-        <button type="button" class="btn btn-success btn-circle" routerLink="/contact/new">
-          <i class="fa fa-plus"></i>
-        </button>
-      </h2>
+      <h2 class="page-header">Contact</h2>
       <app-spinner [visible]="contactsLoading"></app-spinner>
     </div>
   </div>
@@ -19,8 +15,8 @@
             <thead>
               <tr>
                 <th>Full Name</th>
-                <th>Contact Name</th>
-                <th>Active</th>
+                <th>Message</th>
+                <th>Replied</th>
                 <th width="15%">Actions</th>
               </tr>
             </thead>
@@ -29,9 +25,9 @@
                       <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
                   </tr> -->
               <tr *ngFor="let contact of contacts | filter : searchText">
-                <td>{{contact.firstName}} {{contact.lastName}}</td>
-                <td>{{contact.contactName}}</td>
-                <td>{{contact.isDeleted ? "No" : "Yes"}}</td>
+                <td>{{contact.senderFullName}}</td>
+                <td>{{contact.contactBody}}</td>
+                <td>{{ contact.isReplied ? "Yes" : "No" }} </td>
                 <td>
                   <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(contact)">
                     <i class="fa fa-search"></i>
@@ -59,13 +55,15 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">{{contact.firstName}} {{contact.lastName}}</h4>
+          <h4 class="modal-title" id="myModalLabel">{{contact.senderFullName}}</h4>
         </div>
         <div class="modal-body">
           <p>
-            <b>Active: </b>{{ contact.isDeleted ? "No" : "Yes" }} /
+            <b>Replied: </b>{{ contact.isReplied ? "Yes" : "No" }} /
             <b>Date: </b> {{contact.creDate | date}}</p>
           <hr/>
+          <p>
+            <b>Mail Address:</b> {{contact.senderMailAddress}}</p>
           <p>{{contact.contactBody}}</p>
         </div>
         <div class="modal-footer">

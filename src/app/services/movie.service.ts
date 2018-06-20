@@ -21,7 +21,7 @@ export class MovieService {
     }
 
     getAllMovies() {
-        return this._http.get(this._url, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+        return this._http.get(this._url + "/GetMovieDetails", this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
     }
 
     getMovie(movieId) {
@@ -38,5 +38,9 @@ export class MovieService {
 
     deleteMovie(movieId) {
         return this._http.delete(this._url + "/" + movieId, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+    }
+
+    getMovieMediaTypes() {
+        return this._http.get(this._url + "/GetMovieMediaTypes", this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
     }
 }

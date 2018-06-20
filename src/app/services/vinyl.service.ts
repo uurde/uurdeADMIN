@@ -21,7 +21,7 @@ export class VinylService {
     }
 
     getAllVinyls() {
-        return this._http.get(this._url, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+        return this._http.get(this._url + "/GetVinylDetails", this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
     }
 
     getVinyl(vinylId) {
@@ -38,5 +38,9 @@ export class VinylService {
 
     deleteVinyl(vinylId) {
         return this._http.delete(this._url + "/" + vinylId, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+    }
+
+    getVinylTypes() {
+        return this._http.get(this._url + "/GetVinylTypes", this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
     }
 }

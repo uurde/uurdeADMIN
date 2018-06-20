@@ -7,4 +7,5 @@ export class ContactModel extends BaseModel{
     contactBody: string;
     isRelied: boolean;
     repliedDate: Date;
+    replyBody: string;
 }

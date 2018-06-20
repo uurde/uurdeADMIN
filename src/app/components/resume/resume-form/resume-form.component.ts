@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ResumeService } from 'src/app/services/resume.service';
 import { ResumeModel } from '../../../models/resume.model';
 import { FormGroup, NgForm } from '@angular/forms';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-resume-form',
@@ -23,6 +24,7 @@ export class ResumeFormComponent implements OnInit {
   ngOnInit() {
     this._route.params.subscribe(params => {
       var id = +params["id"];
+      console.log(id);
       this.title = id ? "Edit Resume" : "New Resume";
       if (!id)
         return;
@@ -52,4 +54,13 @@ export class ResumeFormComponent implements OnInit {
   cancel() {
     this._router.navigate(['resume']);
   }
+
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '20rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no'
+  };
 }

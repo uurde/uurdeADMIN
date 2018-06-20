@@ -11,9 +11,10 @@ import { MovieService } from 'src/app/services/movie.service';
 export class MovieComponent implements OnInit {
   movies: any;
   movie;
+  moviesLoading;
   pagedMovies = [];
   pageSize = 10;
-  moviesLoading;
+  p: number = 1;
 
   constructor(private _movieService: MovieService) { }
 
@@ -25,7 +26,7 @@ export class MovieComponent implements OnInit {
     this.moviesLoading = true
     this._movieService.getAllMovies().subscribe(data => {
       this.movies = data;
-      //this.pagedMovies = _.take(this.movies, this, this.pageSize);
+      this.pagedMovies = _.take(this.movies, this, this.pageSize);
     },
       null,
       () => { this.moviesLoading = false; });

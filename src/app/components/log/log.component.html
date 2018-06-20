@@ -24,7 +24,7 @@
               <!-- <tr>
                   <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
               </tr> -->
-              <tr *ngFor="let log of logs | filter : searchText">
+              <tr *ngFor="let log of logs | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
                 <td>{{log.logTypeName}}</td>
                 <td>{{log.actionPath}}</td>
                 <td>{{log.message}}</td>
@@ -35,8 +35,10 @@
                 </td>
               </tr>
             </tbody>
-            <!-- <app-pagination [items]="logs" (page-changed)="onPageChanged($event)"></app-pagination> -->
           </table>
+          <div class="has-text-centered">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
         </div>
       </div>
     </div>
@@ -54,20 +56,6 @@
             <b>Date: </b> {{log.creDate | date}}</p>
           <hr/>
           <p>{{log.message}}</p>
-          <hr/>
-          <!-- <div class="media" *ngFor="let comment of currentPost.comments">
-              <div class="media-left">
-                  <a href="#">
-                      <img class="media-object thumbnail" src="http://lorempixel.com/80/80/people?random={{ comment.id }}" alt="...">
-                  </a>
-              </div>
-              <div class="media-body">
-                  <h4 class="media-heading">
-                      {{ comment.name }}
-                  </h4> 
-                  {{ comment.body }}
-              </div>
-          </div> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -15,24 +15,29 @@
           <input type="text" class="form-control" #projectName="ngModel" [(ngModel)]="project.projectName" name="projectName">
         </div>
         <div class="form-group col-lg-6">
-          <label>Title</label>
-          <input type="text" class="form-control" #title="ngModel" [(ngModel)]="project.title" name="title">
+          <label>Project Types</label><br/> 
+          <select class="form-control" (change)="selectchange($event)">
+          <option value="0" selected="selected">Select Type</option> 
+          <option *ngFor="let projectType of projectTypes" [value]="projectType.projectTypeId" >{{projectType.projectTypeName}}</option> 
+          </select>
         </div>
-        <div class="form-group col-lg-6">
+        <div class="form-group col-lg-4">
+          <label>Project Photo</label>
+          <input type="file" class="form-control" name="projectPhotoPath" id="projectPhotoPath" (change)="onFileChange($event)" #fileInput
+            accept="image/*">
+        </div>
+        <div class="form-group col-lg-4">
           <label>Start Date</label>
           <input type="date" class="form-control" #startDate="ngModel" [(ngModel)]="project.startDate" name="startDate">
         </div>
-        <div class="form-group col-lg-6">
+        <div class="form-group col-lg-4">
           <label>End Date</label>
           <input type="date" class="form-control" #endDate="ngModel" [(ngModel)]="project.endDate" name="endDate">
-        </div>        
-        <div class="form-group col-lg-6">
-          <label>Project Photo</label>
-          <input type="file" class="form-control" name="projectPhotoPath" id="projectPhotoPath" (change)="onFileChange($event)" #fileInput accept="image/*">
         </div>
         <div class="form-group col-lg-12">
           <label>Description</label>
-          <textarea class="form-control" rows="5" #description="ngModel" [(ngModel)]="project.projectDescription" name="description"></textarea>
+          <angular-editor [(ngModel)]="project.projectDescription" name="projectDescription" #projectDescription="ngModel" [config]="editorConfig"></angular-editor>
+          <!-- <textarea class="form-control" rows="5" #description="ngModel" [(ngModel)]="project.projectDescription" name="description"></textarea> -->
         </div>
         <div class="form-group col-lg-12">
           <button type="button" class="btn btn-outline btn-danger pull-right" (click)="cancel()">Cancel</button>

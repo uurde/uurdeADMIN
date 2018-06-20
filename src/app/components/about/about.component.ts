@@ -31,17 +31,6 @@ export class AboutComponent implements OnInit {
       () => { this.aboutsLoading = false; });
   }
 
-  deleteAbout(about) {
-    if (confirm("Are you sure you want to disactive about?")) {
-      var index = this.abouts.indexOf(about)
-      this._userService.deleteUser(about.aboutId)
-        .subscribe(null,
-          err => {
-            alert("Could not delete the about.");
-          });
-    }
-  }
-
   select(about) {
     this.about = about;
     this._userService.getUser(about.aboutId).subscribe(data => this.about = data, null);

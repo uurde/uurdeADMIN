@@ -18,9 +18,9 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>Full Name</th>
-                  <th>Vinyl Name</th>
-                  <th>Active</th>
+                  <th>Artist</th>
+                  <th>Album Name</th>
+                  <th>Vinyl Type</th>
                   <th width="15%">Actions</th>
                 </tr>
               </thead>
@@ -28,10 +28,10 @@
                 <!-- <tr>
                         <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
                     </tr> -->
-                <tr *ngFor="let vinyl of vinyls | filter : searchText">
-                  <td>{{vinyl.firstName}} {{vinyl.lastName}}</td>
-                  <td>{{vinyl.vinylName}}</td>
-                  <td>{{vinyl.isDeleted ? "No" : "Yes"}}</td>
+                <tr *ngFor="let vinyl of vinyls | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                  <td>{{vinyl.artistName}}</td>
+                  <td>{{vinyl.albumName}}</td>
+                  <td>{{vinyl.vinylTypeName}}</td>
                   <td>
                     <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(vinyl)">
                       <i class="fa fa-search"></i>
@@ -48,8 +48,10 @@
                   <td *ngIf="vinyls?.length === 0">No Data!</td>
                 </tr>
               </tbody>
-              <!-- <app-pagination [items]="vinyls" (page-changed)="onPageChanged($event)"></app-pagination> -->
             </table>
+            <div class="has-text-centered">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
           </div>
         </div>
       </div>
@@ -59,14 +61,14 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">{{vinyl.firstName}} {{vinyl.lastName}}</h4>
+            <h4 class="modal-title" id="myModalLabel">{{vinyl.artistName}}</h4>
           </div>
           <div class="modal-body">
-            <p>
-              <b>Active: </b>{{ vinyl.isDeleted ? "No" : "Yes" }} /
-              <b>Date: </b> {{vinyl.creDate | date}}</p>
-            <hr/>
-            <p>{{vinyl.vinylBody}}</p>
+            <!-- <img style="display: block; margin-left: auto; margin-right: auto; width: 150px;" src="https://uur-api-dev.azurewebsites.net/{{book.bookCoverPath}}"> -->
+          <hr/>
+          <p><b>Album Name: </b> {{vinyl.albumName}}</p>
+          <p><b>Vinyl Type: </b> {{vinyl.vinylTypeName}}</p>
+          <p><b>Release Date: </b> {{vinyl.albumReleaseDate | date}}</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
