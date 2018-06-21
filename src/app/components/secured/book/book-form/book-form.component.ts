@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { BookService } from 'src/app/services/book.service';
-import { BookModel } from '../../../models/book.model';
+import { BookModel } from '../../../../models/book.model';
 import { FormGroup, NgForm } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 

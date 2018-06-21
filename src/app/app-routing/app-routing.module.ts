@@ -2,26 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes, Router } from '@angular/router';
 
-import { HomeComponent } from 'src/app/components/home/home.component';
-import { AboutComponent } from 'src/app/components/about/about.component';
-import { SkillComponent } from 'src/app/components/skill/skill.component';
-import { ResumeComponent } from 'src/app/components/resume/resume.component';
-import { ProjectComponent } from 'src/app/components/project/project.component';
-import { VinylComponent } from 'src/app/components/vinyl/vinyl.component';
-import { MovieComponent } from 'src/app/components/movie/movie.component';
-import { BookComponent } from 'src/app/components/book/book.component';
-import { ContactComponent } from 'src/app/components/contact/contact.component';
-import { LogComponent } from 'src/app/components/log/log.component';
-import { UserComponent } from 'src/app/components/user/user.component';
-import { UserFormComponent } from 'src/app/components/user/user-form/user-form.component';
-import { SkillFormComponent } from '../components/skill/skill-form/skill-form.component';
-import { ResumeFormComponent } from '../components/resume/resume-form/resume-form.component';
-import { ProjectFormComponent } from '../components/project/project-form/project-form.component';
-import { VinylFormComponent } from '../components/vinyl/vinyl-form/vinyl-form.component';
-import { MovieFormComponent } from '../components/movie/movie-form/movie-form.component';
-import { BookFormComponent } from '../components/book/book-form/book-form.component';
-import { LoginComponent } from "../components/login/login.component";
-import { ContactFormComponent } from '../components/contact/contact-form/contact-form.component';
+import { HomeComponent } from 'src/app/components/secured/home/home.component';
+import { SkillComponent } from 'src/app/components/secured/skill/skill.component';
+import { ResumeComponent } from 'src/app/components/secured/resume/resume.component';
+import { ProjectComponent } from 'src/app/components/secured/project/project.component';
+import { VinylComponent } from 'src/app/components/secured/vinyl/vinyl.component';
+import { MovieComponent } from 'src/app/components/secured/movie/movie.component';
+import { BookComponent } from 'src/app/components/secured/book/book.component';
+import { ContactComponent } from 'src/app/components/secured/contact/contact.component';
+import { LogComponent } from 'src/app/components/secured/log/log.component';
+import { UserComponent } from 'src/app/components/secured/user/user.component';
+import { UserFormComponent } from 'src/app/components/secured/user/user-form/user-form.component';
+import { SkillFormComponent } from '../components/secured/skill/skill-form/skill-form.component';
+import { ResumeFormComponent } from '../components/secured/resume/resume-form/resume-form.component';
+import { ProjectFormComponent } from '../components/secured/project/project-form/project-form.component';
+import { VinylFormComponent } from '../components/secured/vinyl/vinyl-form/vinyl-form.component';
+import { MovieFormComponent } from '../components/secured/movie/movie-form/movie-form.component';
+import { BookFormComponent } from '../components/secured/book/book-form/book-form.component';
+import { LoginComponent } from "../components/public/login/login.component";
+import { ContactFormComponent } from '../components/secured/contact/contact-form/contact-form.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ResumeService } from 'src/app/services/resume.service';
-import { ResumeModel } from '../../../models/resume.model';
+import { ResumeModel } from '../../../../models/resume.model';
 import { FormGroup, NgForm } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 

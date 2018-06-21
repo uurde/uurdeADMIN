@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { MovieService } from 'src/app/services/movie.service';
-import { MovieModel } from '../../../models/movie.model';
+import { MovieModel } from '../../../../models/movie.model';
 import { FormGroup, NgForm } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 

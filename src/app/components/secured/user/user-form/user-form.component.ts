@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserService } from 'src/app/services/user.service';
-import { UserModel } from '../../../models/user.model';
+import { UserModel } from '../../../../models/user.model';
 import { FormGroup, NgForm } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 

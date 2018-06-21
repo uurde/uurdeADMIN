@@ -4,7 +4,7 @@ export class MovieModel extends BaseModel{
     movieId: number;
     movieName: string;
     directorName: string;
-    moviewReleaseDate: Date;
+    movieReleaseDate: Date;
     moviePosterPath: string;
     movieMediaTypeId: number;
     movieMediaTypeName: string;

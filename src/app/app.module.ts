@@ -10,24 +10,23 @@ import { FilterPipe } from './shared/filter/filter.pipe';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
-import { AboutComponent } from './components/about/about.component';
-import { SkillComponent } from './components/skill/skill.component';
-import { ResumeComponent } from './components/resume/resume.component';
-import { ProjectComponent } from './components/project/project.component';
-import { VinylComponent } from './components/vinyl/vinyl.component';
-import { MovieComponent } from './components/movie/movie.component';
-import { BookComponent } from './components/book/book.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { LogComponent } from './components/log/log.component';
-import { UserComponent } from './components/user/user.component';
+import { HomeComponent } from './components/secured/home/home.component';
+import { SkillComponent } from './components/secured/skill/skill.component';
+import { ResumeComponent } from './components/secured/resume/resume.component';
+import { ProjectComponent } from './components/secured/project/project.component';
+import { VinylComponent } from './components/secured/vinyl/vinyl.component';
+import { MovieComponent } from './components/secured/movie/movie.component';
+import { BookComponent } from './components/secured/book/book.component';
+import { ContactComponent } from './components/secured/contact/contact.component';
+import { LogComponent } from './components/secured/log/log.component';
+import { UserComponent } from './components/secured/user/user.component';
 
-import { UserFormComponent } from './components/user/user-form/user-form.component';
-import { VinylFormComponent } from './components/vinyl/vinyl-form/vinyl-form.component';
-import { SkillFormComponent } from './components/skill/skill-form/skill-form.component';
-import { ProjectFormComponent } from './components/project/project-form/project-form.component';
-import { MovieFormComponent } from './components/movie/movie-form/movie-form.component';
-import { ResumeFormComponent } from './components/resume/resume-form/resume-form.component';
+import { UserFormComponent } from './components/secured/user/user-form/user-form.component';
+import { VinylFormComponent } from './components/secured/vinyl/vinyl-form/vinyl-form.component';
+import { SkillFormComponent } from './components/secured/skill/skill-form/skill-form.component';
+import { ProjectFormComponent } from './components/secured/project/project-form/project-form.component';
+import { MovieFormComponent } from './components/secured/movie/movie-form/movie-form.component';
+import { ResumeFormComponent } from './components/secured/resume/resume-form/resume-form.component';
 
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
@@ -44,9 +43,10 @@ import { ResumeService } from './services/resume.service';
 import { SkillService } from './services/skill.service';
 import { UserService } from './services/user.service';
 import { VinylService } from './services/vinyl.service';
-import { BookFormComponent } from './components/book/book-form/book-form.component';
-import { LoginComponent } from './components/login/login.component';
-import { ContactFormComponent } from './components/contact/contact-form/contact-form.component';
+import { BookFormComponent } from './components/secured/book/book-form/book-form.component';
+import { LoginComponent } from './components/public/login/login.component';
+import { ContactFormComponent } from './components/secured/contact/contact-form/contact-form.component';
+import { DashboardComponent } from './components/secured/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -54,7 +54,6 @@ import { ContactFormComponent } from './components/contact/contact-form/contact-
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    AboutComponent,
     SkillComponent,
     ResumeComponent,
     ProjectComponent,
@@ -75,7 +74,8 @@ import { ContactFormComponent } from './components/contact/contact-form/contact-
     ResumeFormComponent,
     BookFormComponent,
     LoginComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ProjectService } from 'src/app/services/project.service';
-import { ProjectModel } from '../../../models/project.model';
+import { ProjectModel } from '../../../../models/project.model';
 import { FormGroup, NgForm } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 

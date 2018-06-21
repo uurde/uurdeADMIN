@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { SkillService } from 'src/app/services/skill.service';
-import { SkillModel } from '../../../models/skill.model';
+import { SkillModel } from '../../../../models/skill.model';
 import { FormGroup, NgForm } from '@angular/forms';
 
 @Component({
