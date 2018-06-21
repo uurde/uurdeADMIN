@@ -14,10 +14,16 @@
   <div class="col-lg-12">
     <div class="panel panel-default" *ngIf="users">
       <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Search">
+          </div>
+        </form>
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
+                <th>#</th>
                 <th>Full Name</th>
                 <th>User Name</th>
                 <th>Active</th>
@@ -28,12 +34,13 @@
               <!-- <tr>
                       <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
                   </tr> -->
-              <tr *ngFor="let user of users | filter : searchText">
+              <tr *ngFor="let user of users | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                <td>{{i+1}}</td>
                 <td>{{user.firstName}} {{user.lastName}}</td>
                 <td>{{user.userName}}</td>
                 <td>{{user.isDeleted ? "No" : "Yes"}}</td>
                 <td>
-                  <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(user)">
+                  <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(user)">
                     <i class="fa fa-search"></i>
                   </button>
                   <button type="button" class="btn btn-info btn-circle" [routerLink]="['/user', user.userId]">
@@ -48,8 +55,10 @@
                 <td *ngIf="users?.length === 0">No Data!</td>
               </tr>
             </tbody>
-            <!-- <app-pagination [items]="users" (page-changed)="onPageChanged($event)"></app-pagination> -->
           </table>
+          <div class="has-text-centered">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
         </div>
       </div>
     </div>

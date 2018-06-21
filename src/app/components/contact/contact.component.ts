@@ -14,6 +14,7 @@ export class ContactComponent implements OnInit {
   pagedContacts = [];
   pageSize = 10;
   contactsLoading;
+  p: number = 1;
 
   constructor(private _contactService: ContactService) { }
 
@@ -25,7 +26,7 @@ export class ContactComponent implements OnInit {
     this.contactsLoading = true
     this._contactService.getAllContacts().subscribe(data => {
       this.contacts = data;
-      //this.pagedContacts = _.take(this.contacts, this, this.pageSize);
+      this.pagedContacts = _.take(this.contacts, this, this.pageSize);
     },
       null,
       () => { this.contactsLoading = false; });

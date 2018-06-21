@@ -15,6 +15,7 @@ export class ProjectComponent implements OnInit {
   pagedProjects = [];
   pageSize = 10;
   projectsLoading;
+  p: number = 1;
 
   constructor(private _projectService: ProjectService) { }
 
@@ -26,7 +27,7 @@ export class ProjectComponent implements OnInit {
     this.projectsLoading = true
     this._projectService.getAllProjects().subscribe(data => {
       this.projects = data;
-      //this.pagedProjects = _.take(this.projects, this, this.pageSize);
+      this.pagedProjects = _.take(this.projects, this, this.pageSize);
     },
       null,
       () => { this.projectsLoading = false; });

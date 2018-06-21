@@ -14,6 +14,7 @@ export class SkillComponent implements OnInit {
   pagedSkills = [];
   pageSize = 10;
   skillsLoading;
+  p: number = 1;
 
   constructor(private _skillService: SkillService) { }
 
@@ -25,7 +26,7 @@ export class SkillComponent implements OnInit {
     this.skillsLoading = true
     this._skillService.getAllSkills().subscribe(data => {
       this.skills = data;
-      //this.pagedSkills = _.take(this.skills, this, this.pageSize);
+      this.pagedSkills = _.take(this.skills, this, this.pageSize);
     },
       null,
       () => { this.skillsLoading = false; });

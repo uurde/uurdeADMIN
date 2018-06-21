@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
   pagedUsers = [];
   pageSize = 10;
   usersLoading;
+  p: number = 1;
 
   constructor(private _userService: UserService) { }
 
@@ -25,7 +26,7 @@ export class UserComponent implements OnInit {
     this.usersLoading = true
     this._userService.getAllUsers().subscribe(data => {
       this.users = data;
-      //this.pagedUsers = _.take(this.users, this, this.pageSize);
+      this.pagedUsers = _.take(this.users, this, this.pageSize);
     },
       null,
       () => { this.usersLoading = false; });

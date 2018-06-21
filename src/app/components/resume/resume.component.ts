@@ -14,6 +14,7 @@ export class ResumeComponent implements OnInit {
   pagedResumes = [];
   pageSize = 10;
   resumesLoading;
+  p: number = 1;
 
   constructor(private _resumeService: ResumeService) { }
 
@@ -25,7 +26,7 @@ export class ResumeComponent implements OnInit {
     this.resumesLoading = true
     this._resumeService.getAllResumes().subscribe(data => {
       this.resumes = data;
-      //this.pagedResumes = _.take(this.resumes, this, this.pageSize);
+      this.pagedResumes = _.take(this.resumes, this, this.pageSize);
     },
       null,
       () => { this.resumesLoading = false; });

@@ -14,10 +14,16 @@
   <div class="col-lg-12">
     <div class="panel panel-default" *ngIf="resumes">
       <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Search">
+          </div>
+        </form>
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
+                <th>#</th>
                 <th>Company</th>
                 <th>Title</th>
                 <th>Active</th>
@@ -28,12 +34,13 @@
               <!-- <tr>
                       <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
                   </tr> -->
-              <tr *ngFor="let resume of resumes | filter : searchText">
+              <tr *ngFor="let resume of resumes | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                <td>{{i+1}}</td>
                 <td>{{resume.company}}</td>
                 <td>{{resume.title}}</td>
                 <td>{{resume.isDeleted ? "No" : "Yes"}}</td>
                 <td>
-                  <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(resume)">
+                  <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(resume)">
                     <i class="fa fa-search"></i>
                   </button>
                   <button type="button" class="btn btn-info btn-circle" [routerLink]="['/resume', resume.resumeId]">
@@ -48,8 +55,10 @@
                 <td *ngIf="resumes?.length === 0">No Data!</td>
               </tr>
             </tbody>
-            <!-- <app-pagination [items]="resumes" (page-changed)="onPageChanged($event)"></app-pagination> -->
           </table>
+          <div class="has-text-centered">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
         </div>
       </div>
     </div>
@@ -66,7 +75,9 @@
             <b>Start Date: </b>{{ resume.startDate | date }} /
             <b>End Date: </b> {{resume.endDate | date}}</p>
           <hr/>
-          <b><p>{{resume.title}}</p></b>
+          <b>
+            <p>{{resume.title}}</p>
+          </b>
           <div [innerHTML]="resume.resumeDescription"></div>
         </div>
         <div class="modal-footer">

@@ -14,10 +14,16 @@
   <div class="col-lg-12">
     <div class="panel panel-default" *ngIf="projects">
       <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Search">
+          </div>
+        </form>
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
+                <th>#</th>
                 <th>Project Name</th>
                 <th>Project Type</th>
                 <th>Active</th>
@@ -28,12 +34,13 @@
               <!-- <tr>
                       <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
                   </tr> -->
-              <tr *ngFor="let project of projects | filter : searchText">
+              <tr *ngFor="let project of projects | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                <td>{{i+1}}</td>
                 <td>{{project.projectName}}</td>
                 <td>{{project.projectTypeName}}</td>
                 <td>{{project.isDeleted ? "No" : "Yes"}}</td>
                 <td>
-                  <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(project)">
+                  <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(project)">
                     <i class="fa fa-search"></i>
                   </button>
                   <button type="button" class="btn btn-info btn-circle" [routerLink]="['/project', project.projectId]">
@@ -48,8 +55,10 @@
                 <td *ngIf="projects?.length === 0">No Data!</td>
               </tr>
             </tbody>
-            <!-- <app-pagination [items]="projects" (page-changed)="onPageChanged($event)"></app-pagination> -->
           </table>
+          <div class="has-text-centered">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
         </div>
       </div>
     </div>

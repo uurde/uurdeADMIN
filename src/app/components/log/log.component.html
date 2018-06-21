@@ -10,10 +10,16 @@
   <div class="col-lg-12">
     <div class="panel panel-default" *ngIf="logs">
       <div class="panel-body">
+        <form>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Search">
+            </div>
+        </form>
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
+                <th>#</th>
                 <th width="12%">Log Type</th>
                 <th>Action Path</th>
                 <th>Message</th>
@@ -25,11 +31,12 @@
                   <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
               </tr> -->
               <tr *ngFor="let log of logs | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                <td>{{i+1}}</td>
                 <td>{{log.logTypeName}}</td>
                 <td>{{log.actionPath}}</td>
                 <td>{{log.message}}</td>
                 <td>
-                  <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(log)">
+                  <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(log)">
                     <i class="fa fa-search"></i>
                   </button>
                 </td>

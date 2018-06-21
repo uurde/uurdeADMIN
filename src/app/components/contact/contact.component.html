@@ -10,10 +10,16 @@
   <div class="col-lg-12">
     <div class="panel panel-default" *ngIf="contacts">
       <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Search">
+          </div>
+        </form>
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
+                <th>#</th>
                 <th>Full Name</th>
                 <th>Message</th>
                 <th>Replied</th>
@@ -24,12 +30,13 @@
               <!-- <tr>
                       <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
                   </tr> -->
-              <tr *ngFor="let contact of contacts | filter : searchText">
+              <tr *ngFor="let contact of contacts | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                <td>{{i+1}}</td>
                 <td>{{contact.senderFullName}}</td>
                 <td>{{contact.contactBody}}</td>
-                <td>{{ contact.isReplied ? "Yes" : "No" }} </td>
+                <td>{{contact.isReplied ? "Yes" : "No"}} </td>
                 <td>
-                  <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(contact)">
+                  <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(contact)">
                     <i class="fa fa-search"></i>
                   </button>
                   <button type="button" class="btn btn-info btn-circle" [routerLink]="['/contact', contact.contactId]">
@@ -44,8 +51,10 @@
                 <td *ngIf="contacts?.length === 0">No Data!</td>
               </tr>
             </tbody>
-            <!-- <app-pagination [items]="contacts" (page-changed)="onPageChanged($event)"></app-pagination> -->
           </table>
+          <div class="has-text-centered">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
         </div>
       </div>
     </div>
