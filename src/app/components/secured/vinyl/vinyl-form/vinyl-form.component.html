@@ -31,6 +31,10 @@
             <input type="date" class="form-control" #albumReleaseDate="ngModel" [(ngModel)]="vinyl.albumReleaseDate" name="albumReleaseDate">
           </div>
           <div class="form-group col-lg-12">
+            <label>Cover Photo</label>
+            <input type="text" class="form-control" #albumCoverPath="ngModel" [(ngModel)]="vinyl.albumCoverPath" name="albumCoverPath">
+          </div>
+          <div class="form-group col-lg-12">
             <button type="button" class="btn btn-outline btn-danger pull-right" (click)="cancel()">Cancel</button>
             <button type="submit" class="btn btn-outline btn-success pull-right" style="margin-right: 5px">Save</button>
           </div>

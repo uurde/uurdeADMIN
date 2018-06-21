@@ -21,35 +21,44 @@ import { MovieFormComponent } from '../components/secured/movie/movie-form/movie
 import { BookFormComponent } from '../components/secured/book/book-form/book-form.component';
 import { LoginComponent } from "../components/public/login/login.component";
 import { ContactFormComponent } from '../components/secured/contact/contact-form/contact-form.component';
+import { UserProfileComponent } from '../components/secured/user/user-profile/user-profile.component';
+import { DashboardComponent } from '../components/secured/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', component: HomeComponent },
-  { path: 'skill/:id', component: SkillFormComponent },
-  { path: 'skill/new', component: SkillFormComponent },
-  { path: 'skill', component: SkillComponent },
-  { path: 'resume/:id', component: ResumeFormComponent },
-  { path: 'resume/new', component: ResumeFormComponent },
-  { path: 'resume', component: ResumeComponent },
-  { path: 'project/:id', component: ProjectFormComponent },
-  { path: 'project/new', component: ProjectFormComponent },
-  { path: 'project', component: ProjectComponent },
-  { path: 'vinyl/:id', component: VinylFormComponent },
-  { path: 'vinyl/new', component: VinylFormComponent },
-  { path: 'vinyl', component: VinylComponent },
-  { path: 'movie/:id', component: MovieFormComponent },
-  { path: 'movie/new', component: MovieFormComponent },
-  { path: 'movie', component: MovieComponent },
-  { path: 'book/:id', component: BookFormComponent },
-  { path: 'book/new', component: BookFormComponent },
-  { path: 'book', component: BookComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'contact/:id', component: ContactFormComponent },
-  { path: 'log', component: LogComponent },
-  { path: 'user/:id', component: UserFormComponent },
-  { path: 'user/new', component: UserFormComponent },
-  { path: 'user', component: UserComponent },
-  { path: '**', component: HomeComponent }
+  {
+    path: '', component: HomeComponent,
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'skill/:id', component: SkillFormComponent },
+      { path: 'skill/new', component: SkillFormComponent },
+      { path: 'skill', component: SkillComponent },
+      { path: 'resume/:id', component: ResumeFormComponent },
+      { path: 'resume/new', component: ResumeFormComponent },
+      { path: 'resume', component: ResumeComponent },
+      { path: 'project/:id', component: ProjectFormComponent },
+      { path: 'project/new', component: ProjectFormComponent },
+      { path: 'project', component: ProjectComponent },
+      { path: 'vinyl/:id', component: VinylFormComponent },
+      { path: 'vinyl/new', component: VinylFormComponent },
+      { path: 'vinyl', component: VinylComponent },
+      { path: 'movie/:id', component: MovieFormComponent },
+      { path: 'movie/new', component: MovieFormComponent },
+      { path: 'movie', component: MovieComponent },
+      { path: 'book/:id', component: BookFormComponent },
+      { path: 'book/new', component: BookFormComponent },
+      { path: 'book', component: BookComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'contact/:id', component: ContactFormComponent },
+      { path: 'log', component: LogComponent },
+      { path: 'user/:id', component: UserFormComponent },
+      { path: 'user/new', component: UserFormComponent },
+      { path: 'user', component: UserComponent },
+      { path: 'profile', component: UserProfileComponent }
+    ]
+  },
+  { path: '**', component: LoginComponent }
 ]
 
 @NgModule({

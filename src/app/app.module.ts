@@ -47,6 +47,7 @@ import { BookFormComponent } from './components/secured/book/book-form/book-form
 import { LoginComponent } from './components/public/login/login.component';
 import { ContactFormComponent } from './components/secured/contact/contact-form/contact-form.component';
 import { DashboardComponent } from './components/secured/dashboard/dashboard.component';
+import { UserProfileComponent } from './components/secured/user/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { DashboardComponent } from './components/secured/dashboard/dashboard.com
     BookFormComponent,
     LoginComponent,
     ContactFormComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

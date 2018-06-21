@@ -31,6 +31,10 @@
           <input type="date" class="form-control" #movieReleaseDate="ngModel" [(ngModel)]="movie.movieReleaseDate" name="movieReleaseDate">
         </div>
         <div class="form-group col-lg-12">
+          <label>Cover Photo</label>
+          <input type="text" class="form-control" #moviePosterPath="ngModel" [(ngModel)]="movie.moviePosterPath" name="moviePosterPath">
+        </div>
+        <div class="form-group col-lg-12">
           <button type="button" class="btn btn-outline btn-danger pull-right" (click)="cancel()">Cancel</button>
           <button type="submit" class="btn btn-outline btn-success pull-right" style="margin-right: 5px">Save</button>
         </div>
