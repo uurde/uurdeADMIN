@@ -47,6 +47,7 @@ import { LoginComponent } from './components/public/login/login.component';
 import { ContactFormComponent } from './components/secured/contact/contact-form/contact-form.component';
 import { DashboardComponent } from './components/secured/dashboard/dashboard.component';
 import { UserProfileComponent } from './components/secured/user/user-profile/user-profile.component';
+import { AuthguardService } from './services/authguard.service';
 
 
 @NgModule({
@@ -97,7 +98,8 @@ import { UserProfileComponent } from './components/secured/user/user-profile/use
     ResumeService,
     SkillService,
     UserService,
-    VinylService
+    VinylService,
+    AuthguardService
   ],
   bootstrap: [AppComponent]
 })

@@ -24,7 +24,6 @@ export class ResumeFormComponent implements OnInit {
   ngOnInit() {
     this._route.params.subscribe(params => {
       var id = +params["id"];
-      console.log(id);
       this.title = id ? "Edit Resume" : "New Resume";
       if (!id)
         return;

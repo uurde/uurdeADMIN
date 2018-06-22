@@ -3,6 +3,7 @@ import { HttpModule } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
 
 import { HeaderConfig } from 'src/app/services/header.config';
 import { UserModel } from '../models/user.model';
@@ -38,5 +39,19 @@ export class UserService {
 
     deleteUser(userId) {
         return this._http.delete(this._url + "/" + userId, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+    }
+
+    login(user) {
+        return this._http.post(this._url + "/Login", user, this.headerConfig.httpOptions).pipe(map(res => {
+            if (res) {
+                localStorage.setItem('currentUser', JSON.stringify(res));
+            }
+            return res;
+        }
+        ));
+    }//values?username=" + user.userName + "&password=" + user.userPassword
+
+    logout() {
+        localStorage.removeItem('currentUser');
     }
 }

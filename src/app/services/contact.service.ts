@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import { HeaderConfig } from 'src/app/services/header.config';
 
@@ -38,5 +36,9 @@ export class ContactService {
 
     sendMail(contact) {
         return this._http.post(this._url + "/SendMail", contact, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+    }
+
+    getNotRepliedContacts() {
+        return this._http.get(this._url + "/GetNotRepliedContacts", this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
     }
 }

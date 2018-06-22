@@ -39,4 +39,8 @@ export class BookService {
     deleteBook(bookId) {
         return this._http.delete(this._url + "/" + bookId, this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
     }
+
+    getUnreadBooks() {
+        return this._http.get(this._url + "/GetUnreadBooks", this.headerConfig.httpOptions).pipe(tap(res => { return res; }));
+    }
 }
