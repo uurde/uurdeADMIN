@@ -16,6 +16,7 @@ export class LogComponent implements OnInit {
   pagedLogs = [];
   pageSize = 10;
   p: number = 1;
+  userFilter: any = { actionPath: '' };
 
   constructor(private _logService: LogService) { }
 

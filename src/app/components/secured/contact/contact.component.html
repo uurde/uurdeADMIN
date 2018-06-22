@@ -10,11 +10,6 @@
   <div class="col-lg-12">
     <div class="panel panel-default" *ngIf="contacts">
       <div class="panel-body">
-        <form>
-          <div class="form-group">
-            <input class="form-control" type="text" placeholder="Search">
-          </div>
-        </form>
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
@@ -27,10 +22,10 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <tr>
-                      <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
-                  </tr> -->
-              <tr *ngFor="let contact of contacts | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                <tr>
+                    <td colspan="6"><input class="form-control" [(ngModel)]="userFilter.senderFullName" type="text" placeholder="Search for sender name"></td>
+                </tr>
+              <tr *ngFor="let contact of contacts | filterBy: userFilter | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
                 <td>{{i+1}}</td>
                 <td>{{contact.senderFullName}}</td>
                 <td>{{contact.contactBody}}</td>

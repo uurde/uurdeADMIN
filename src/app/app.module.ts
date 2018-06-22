@@ -5,8 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from 'src/app/app-routing/app-routing.module';
-
-import { FilterPipe } from './shared/filter/filter.pipe';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -66,7 +65,6 @@ import { UserProfileComponent } from './components/secured/user/user-profile/use
     UserComponent,
     PaginationComponent,
     SpinnerComponent,
-    FilterPipe,
     UserFormComponent,
     VinylFormComponent,
     SkillFormComponent,
@@ -87,7 +85,8 @@ import { UserProfileComponent } from './components/secured/user/user-profile/use
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    AngularEditorModule
+    AngularEditorModule,
+    FilterPipeModule
   ],
   providers: [
     BookService,

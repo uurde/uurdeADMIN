@@ -14,11 +14,6 @@
   <div class="col-lg-12">
     <div class="panel panel-default" *ngIf="projects">
       <div class="panel-body">
-        <form>
-          <div class="form-group">
-            <input class="form-control" type="text" placeholder="Search">
-          </div>
-        </form>
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
@@ -31,10 +26,12 @@
               </tr>
             </thead>
             <tbody>
-              <!-- <tr>
-                      <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
-                  </tr> -->
-              <tr *ngFor="let project of projects | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+              <tr>
+                <td colspan="5">
+                  <input class="form-control" [(ngModel)]="userFilter.projectName" type="text" placeholder="Search for project name">
+                </td>
+              </tr>
+              <tr *ngFor="let project of projects | filterBy: userFilter | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
                 <td>{{i+1}}</td>
                 <td>{{project.projectName}}</td>
                 <td>{{project.projectTypeName}}</td>

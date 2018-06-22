@@ -15,6 +15,7 @@ export class BookComponent implements OnInit {
   pagedBooks = [];
   pageSize = 10;
   p: number = 1;
+  userFilter: any = { bookName: '' };
 
   constructor(private _bookService: BookService) { }
 

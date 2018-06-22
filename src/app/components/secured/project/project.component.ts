@@ -16,6 +16,7 @@ export class ProjectComponent implements OnInit {
   pageSize = 10;
   projectsLoading;
   p: number = 1;
+  userFilter: any = { projectName: '' };
 
   constructor(private _projectService: ProjectService) { }
 

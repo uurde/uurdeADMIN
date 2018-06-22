@@ -15,6 +15,7 @@ export class ContactComponent implements OnInit {
   pageSize = 10;
   contactsLoading;
   p: number = 1;
+  userFilter: any = { senderFullName: '' };
 
   constructor(private _contactService: ContactService) { }
 

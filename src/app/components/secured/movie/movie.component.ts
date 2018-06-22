@@ -15,6 +15,7 @@ export class MovieComponent implements OnInit {
   pagedMovies = [];
   pageSize = 10;
   p: number = 1;
+  userFilter: any = { movieName: '' };
 
   constructor(private _movieService: MovieService) { }
 
