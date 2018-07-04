@@ -43,7 +43,7 @@ export class ProjectFormComponent implements OnInit {
   }  
 
   selectchange(args){ 
-    this.project.projectTypeId = args.target.selectedIndex; 
+    this.project.projectTypeId = args.target.value; 
   } 
 
   save() {

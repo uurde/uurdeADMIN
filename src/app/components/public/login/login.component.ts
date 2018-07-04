@@ -28,8 +28,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this._authenticationservice.logout();
     this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/dashboard';
-    this.user.userName = "uurde";
-    this.user.userPassword = "0734ypkEUZ87";
   }
 
   login() {
