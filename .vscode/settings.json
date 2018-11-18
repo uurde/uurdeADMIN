@@ -1,4 +1,3 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/06ddbcf9-ab1b-42e9-a785-967e9d19c355/resourceGroups/uur-admin-dev/providers/Microsoft.Web/sites/uur-admin-dev",
     "appService.deploySubpath": "dist\\uurdeADMIN"
 }
