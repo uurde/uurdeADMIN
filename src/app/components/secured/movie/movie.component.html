@@ -22,18 +22,22 @@
                 <th>Movie Name</th>
                 <th>Director</th>
                 <th>Media</th>
+                <th>IMDB Id</th>
+                <th>IMDB Rating</th>                
                 <th width="15%">Actions</th>
               </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="5"><input class="form-control" [(ngModel)]="userFilter.movieName" type="text" placeholder="Search for movie name"></td>
+                    <td colspan="7"><input class="form-control" [(ngModel)]="userFilter.movieName" type="text" placeholder="Search for movie name"></td>
                 </tr>
               <tr *ngFor="let movie of movies | filterBy: userFilter | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
                 <td>{{i+1}}</td>
                 <td>{{movie.movieName}}</td>
                 <td>{{movie.directorName}}</td>
                 <td>{{movie.movieTypeName}}</td>
+                <td><a href="https://www.imdb.com/title/{{movie.imdbId}}" target="_blank">{{movie.imdbId}}</a></td>
+                <td>{{movie.imdbRating}}</td>
                 <td>
                   <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(movie)">
                     <i class="fa fa-search"></i>
@@ -66,7 +70,7 @@
           <h4 class="modal-title" id="myModalLabel">{{movie.movieName}}</h4>
         </div>
         <div class="modal-body">
-          <!-- <img style="display: block; margin-left: auto; margin-right: auto; width: 150px;" src="https://uur-api-dev.azurewebsites.net/{{book.bookCoverPath}}"> -->
+          <img style="display: block; margin-left: auto; margin-right: auto; width: 150px;" src="{{movie.moviePosterPath}}">
           <hr/>
           <p>
             <b>Director: </b> {{movie.directorName}}</p>
@@ -74,6 +78,11 @@
             <b>Media Type: </b> {{movie.movieTypeName}}</p>
           <p>
             <b>Release Date: </b> {{movie.movieReleaseDate | date}}</p>
+          <p>
+              <b>IMDB Id: </b><a href="https://www.imdb.com/title/{{movie.imdbId}}" target="_blank">{{movie.imdbId}}</a>
+            </p>
+            <p>
+              <b>IMDB Rating: </b> {{movie.imdbRating}}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

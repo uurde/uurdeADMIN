@@ -8,4 +8,6 @@ export class MovieModel extends BaseModel{
     moviePosterPath: string;
     movieMediaTypeId: number;
     movieMediaTypeName: string;
+    imdbId: string;
+    imdbRating: string;
 }
