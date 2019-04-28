@@ -22,7 +22,7 @@
                 <th>Movie Name</th>
                 <th>Director</th>
                 <th>Media</th>
-                <th>IMDB Id</th>
+                <th>Release Date</th>
                 <th>IMDB Rating</th>                
                 <th width="15%">Actions</th>
               </tr>
@@ -36,7 +36,7 @@
                 <td>{{movie.movieName}}</td>
                 <td>{{movie.directorName}}</td>
                 <td>{{movie.movieTypeName}}</td>
-                <td><a href="https://www.imdb.com/title/{{movie.imdbId}}" target="_blank">{{movie.imdbId}}</a></td>
+                <td>{{movie.movieReleaseDate | date}}</td>
                 <td>{{movie.imdbRating}}</td>
                 <td>
                   <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(movie)">

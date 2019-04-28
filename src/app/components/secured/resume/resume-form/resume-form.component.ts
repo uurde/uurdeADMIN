@@ -40,6 +40,18 @@ export class ResumeFormComponent implements OnInit {
     });
   }
 
+  onFileChange(event) {
+    let reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        let path = reader.result;
+        this.resume.companyLogoPath = path;
+      }
+    }
+  }
+
   save() {
     var result;
     if (this.resume.resumeId == null)

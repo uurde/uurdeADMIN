@@ -71,13 +71,13 @@
           <h4 class="modal-title" id="myModalLabel">{{resume.company}}</h4>
         </div>
         <div class="modal-body">
-          <p>
-            <b>Start Date: </b>{{ resume.startDate | date }} /
-            <b>End Date: </b> {{resume.endDate | date}}</p>
+            <img style="display: block; margin-left: auto; margin-right: auto; width: 150px;" src="http://uurde.ugurdegirmenci.net/{{resume.companyLogoPath}}">
           <hr/>
           <b>
             <p>{{resume.title}}</p>
-          </b>
+          </b><p>
+              <b>Start Date: </b>{{ resume.startDate | date }} /
+              <b>End Date: </b> {{resume.endDate | date}}</p>
           <div [innerHTML]="resume.resumeDescription"></div>
         </div>
         <div class="modal-footer">
