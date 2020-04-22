@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from 'src/app/app-routing/app-routing.module';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 
@@ -19,6 +19,11 @@ import { BookComponent } from './components/secured/book/book.component';
 import { ContactComponent } from './components/secured/contact/contact.component';
 import { LogComponent } from './components/secured/log/log.component';
 import { UserComponent } from './components/secured/user/user.component';
+import { DashboardComponent } from './components/secured/dashboard/dashboard.component';
+import { UserProfileComponent } from './components/secured/user/user-profile/user-profile.component';
+import { LoginComponent } from './components/public/login/login.component';
+import { DeviceComponent } from './components/secured/iot/device/device.component';
+import { DeviceMessageComponent } from './components/secured/iot/device-message/device-message.component';
 
 import { UserFormComponent } from './components/secured/user/user-form/user-form.component';
 import { VinylFormComponent } from './components/secured/vinyl/vinyl-form/vinyl-form.component';
@@ -26,6 +31,8 @@ import { SkillFormComponent } from './components/secured/skill/skill-form/skill-
 import { ProjectFormComponent } from './components/secured/project/project-form/project-form.component';
 import { MovieFormComponent } from './components/secured/movie/movie-form/movie-form.component';
 import { ResumeFormComponent } from './components/secured/resume/resume-form/resume-form.component';
+import { BookFormComponent } from './components/secured/book/book-form/book-form.component';
+import { ContactFormComponent } from './components/secured/contact/contact-form/contact-form.component';
 
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
@@ -42,11 +49,7 @@ import { ResumeService } from './services/resume.service';
 import { SkillService } from './services/skill.service';
 import { UserService } from './services/user.service';
 import { VinylService } from './services/vinyl.service';
-import { BookFormComponent } from './components/secured/book/book-form/book-form.component';
-import { LoginComponent } from './components/public/login/login.component';
-import { ContactFormComponent } from './components/secured/contact/contact-form/contact-form.component';
-import { DashboardComponent } from './components/secured/dashboard/dashboard.component';
-import { UserProfileComponent } from './components/secured/user/user-profile/user-profile.component';
+import { IotService } from './services/iot.service';
 import { AuthguardService } from './services/authguard.service';
 
 
@@ -76,7 +79,9 @@ import { AuthguardService } from './services/authguard.service';
     LoginComponent,
     ContactFormComponent,
     DashboardComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    DeviceComponent,
+    DeviceMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +104,8 @@ import { AuthguardService } from './services/authguard.service';
     SkillService,
     UserService,
     VinylService,
-    AuthguardService
+    AuthguardService,
+    IotService
   ],
   bootstrap: [AppComponent]
 })

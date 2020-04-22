@@ -30,7 +30,17 @@
     <ul class="nav" id="side-menu">
       <li>
         <a routerLink="/dashboard" routerLinkActive="active">
-          <i class="fa fa-home fa-fw"></i> Home</a>
+          <i class="fa fa-home fa-fw"></i> Home
+          <span class="fa arrow"></span>
+        </a>
+        <ul class="nav nav-second-level">
+          <li>
+            <a routerLink="/device" routerLinkActive="active">Devices</a>
+          </li>
+          <li>
+            <a routerLink="/device-message" routerLinkActive="active">Device Messages</a>
+          </li>
+        </ul>
       </li>
       <li>
         <a href="#">

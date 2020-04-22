@@ -23,6 +23,8 @@ import { LoginComponent } from "../components/public/login/login.component";
 import { ContactFormComponent } from '../components/secured/contact/contact-form/contact-form.component';
 import { UserProfileComponent } from '../components/secured/user/user-profile/user-profile.component';
 import { DashboardComponent } from '../components/secured/dashboard/dashboard.component';
+import { DeviceComponent } from '../components/secured/iot/device/device.component';
+import { DeviceMessageComponent } from '../components/secured/iot/device-message/device-message.component';
 import { AuthguardService } from '../services/authguard.service';
 
 const appRoutes: Routes = [
@@ -31,7 +33,7 @@ const appRoutes: Routes = [
     path: '', component: HomeComponent, canActivate: [AuthguardService],
     children: [
       //{ path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthguardService] },
+      { path: 'dashboard', component: DashboardComponent },
       { path: 'skill/:id', component: SkillFormComponent },
       { path: 'skill/new', component: SkillFormComponent },
       { path: 'skill', component: SkillComponent },
@@ -56,7 +58,9 @@ const appRoutes: Routes = [
       { path: 'user/:id', component: UserFormComponent },
       { path: 'user/new', component: UserFormComponent },
       { path: 'user', component: UserComponent },
-      { path: 'profile', component: UserProfileComponent }
+      { path: 'profile', component: UserProfileComponent },
+      { path: 'device', component: DeviceComponent },
+      { path: 'device-message', component: DeviceMessageComponent }
     ]
   },
   { path: '**', redirectTo: '/login' }

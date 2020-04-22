@@ -8,4 +8,5 @@ export class ResumeModel extends BaseModel{
     startDate: Date;
     endDate: Date;
     companyLogoPath: string;
+    CompanyUrl: string;
 }

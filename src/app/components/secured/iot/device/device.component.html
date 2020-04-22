@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-header">Device
+        <!-- <button type="button" class="btn btn-success btn-circle" routerLink="/vinyl/new">
+          <i class="fa fa-plus"></i>
+        </button> -->
+      </h2>
+      <app-spinner [visible]="devicesLoading"></app-spinner>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Search">
+          </div>
+        </form>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Device Name</th>
+                <th>Device Type</th>
+                <th>Device Brand</th>
+                <th width="15%">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                        <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
+                    </tr> -->
+              <!-- <tr *ngFor="let device of devices | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{vinyl.artistName}}</td>
+                <td>{{vinyl.albumName}}</td>
+                <td>{{vinyl.vinylTypeName}}</td>
+                <td>
+                  <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#myModal" (click)="select(vinyl)">
+                    <i class="fa fa-search"></i>
+                  </button>
+                  <button type="button" class="btn btn-info btn-circle" [routerLink]="['/vinyl', vinyl.vinylId]">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-circle">
+                    <i (click)="deleteVinyl(vinyl)" class="fa fa-times"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td *ngIf="vinyls?.length === 0">No Data!</td>
+              </tr> -->
+            </tbody>
+          </table>
+          <div class="has-text-centered">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

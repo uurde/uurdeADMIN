@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-header">Device Messages
+        <!-- <button type="button" class="btn btn-success btn-circle" routerLink="/vinyl/new">
+          <i class="fa fa-plus"></i>
+        </button> -->
+      </h2>
+      <app-spinner [visible]="deviceMessagesLoading"></app-spinner>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="Search">
+          </div>
+        </form>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Topic</th>
+                <th>Message Type</th>
+                <th>Message Time</th>
+                <th width="15%">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                        <td colspan="3"><input [(ngModel)]="searchText" placeholder="search text goes here"></td>
+                    </tr> -->
+              <tr
+                *ngFor="let deviceMessage of deviceMessages | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{deviceMessage.topic}}</td>
+                <td>{{deviceMessage.messageType}}</td>
+                <td>{{deviceMessage.creDate | date:'dd.MM.yyyy H:mm'}}</td>
+                <td>
+                  <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#myModal"
+                    (click)="select(deviceMessage)">
+                    <i class="fa fa-search"></i>
+                  </button>
+                  <button type="button" class="btn btn-info btn-circle"
+                    [routerLink]="['/vinyl', deviceMessage.deviceMessageId]">
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger btn-circle">
+                    <i (click)="deleteVinyl(vinyl)" class="fa fa-times"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td *ngIf="deviceMessages?.length === 0">No Data!</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="has-text-centered">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+    *ngIf="deviceMessage">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Message Detail</h4>
+        </div>
+        <div class="modal-body">
+          <hr />
+          <p><b>Topic: </b> {{deviceMessage.topic}}</p>
+          <p><b>Message Time:</b> {{deviceMessage.creDate | date:'dd.MM.yyyy H:mm'}}</p>
+          <p><b>Message Type: </b> {{deviceMessage.messageType}}</p>
+          <p><b>Message: </b> {{deviceMessage.message}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
